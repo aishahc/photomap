@@ -14,17 +14,16 @@
  */
 function createPhotoMap () {
   // URL of a Google Sheets spreadsheet output as CSV
-  var csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTfo3BkJrAlL0VlioLxjAumpEXV-rPuz8xHufUUKAKCOj8CWzeFnntr9xdmAOSWid3-88AdwMeZhKis/pub?gid=1710994937&single=true&output=csv';
+  var csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ_7ZYi0FjjNtw9h0yUwq5pK_-jMWgi66BMYlhpQgvOMUYxWxNDiO-wW_6Bm7X1Yw/pub?gid=1710994937&single=true&output=csv';
   
   // create map object with center lat/lon and zoom level
   var map = L.map('map').setView([25.767, -80.216], 13);
   
   // create basemap object. See examples at https://leaflet-extras.github.io/leaflet-providers/preview/
- var BaseMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+ var basemap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-  }).addTo(map);
+}).addTo(map);
   
   // use Papa Parse (papaparse.com) to get the Google Sheets CSV
   Papa.parse(csvUrl, {
