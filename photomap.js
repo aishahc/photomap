@@ -20,10 +20,12 @@ function createPhotoMap () {
   var map = L.map('map').setView([25.767, -80.216], 13);
   
   // create basemap object. See examples at https://leaflet-extras.github.io/leaflet-providers/preview/
-	var basemap = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
-  		maxZoom: 16,
-  		attribution: 'USGS'
-  	}).addTo(map);
+  var Jawg_Streets = L.tileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+		attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		minZoom: 0,
+		maxZoom: 22,
+		accessToken: '<your accessToken>'
+}).addTo(map);
 
   // use Papa Parse (papaparse.com) to get the Google Sheets CSV
   Papa.parse(csvUrl, {
