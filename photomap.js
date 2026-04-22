@@ -20,10 +20,10 @@ function createPhotoMap () {
   var map = L.map('map').setView([25.767, -80.216], 13);
   
   // create basemap object. See examples at https://leaflet-extras.github.io/leaflet-providers/preview/
-   var basemap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map), {
-	maxZoom: 19,
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-)};
+	var basemap = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}', {
+  		maxZoom: 16,
+  		attribution: 'USGS'
+  	}).addTo(map);
 
   // use Papa Parse (papaparse.com) to get the Google Sheets CSV
   Papa.parse(csvUrl, {
